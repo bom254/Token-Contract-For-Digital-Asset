@@ -15,13 +15,15 @@ contract Dalas is ERC20, ERC20Permit, Ownable {
         uint256 referrals;
     }
 
+    uint256 public constant initialSupply = 1_000_000 * 10 ** 18;
+
     mapping(address => User) public users;
     mapping(string => address) public codeToAddress;
 
     event TokensMinted(address indexed to, uint256 amount);
     event TransferWithMemo(address indexed from, address indexed to, uint256 amount, string memo);
 
-    constructor(address initialOwner, uint256 initialSupply)
+    constructor(address initialOwner)
         ERC20("Dalas", "DKL")
         Ownable(initialOwner)
         ERC20Permit("Dalas")
